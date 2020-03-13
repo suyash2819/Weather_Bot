@@ -1,0 +1,93 @@
+body, html {
+     height: 100%;
+     font-family: 'Raleway', sans-serif;
+     background: #000;
+}
+ .image {
+    /* The image used */
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 130vw;
+     height: 130vh;
+     background-image: url("cumulonimbus.jpg");
+    /* Add the blur effect */
+     filter: blur(8px);
+     -webkit-filter: blur(8px);
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     margin: -10vh;
+     z-index: 1;
+     opacity: 0.5;
+}
+ #window {
+     background-color: #F6F6F6;
+     border-radius: 8px;
+     margin: 0 auto auto;
+     max-width: 500px;
+     margin-top: 50px;
+     position: relative;
+     z-index: 2;
+     padding: 16px;
+     min-height: 300px;
+     max-height: 95vh;
+     overflow: hidden;
+}
+ #messaging {
+     flex: 1;
+     margin-bottom: 80px;
+}
+ #userform {
+     position: absolute;
+     left: 0;
+     right: 0;
+}
+ input {
+     display: block;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     box-sizing: border-box;
+     width: 100%;
+     height: 40px;
+     padding-left: 10px;
+     border: none;
+     box-shadow: 0px -8px 16px 8px rgba(0,0,0,0.1);
+}
+ .input {
+     background-color: #F6F6F6;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+}
+ .message {
+     display: inline-block;
+     padding: 10px;
+     margin-bottom: 8px;
+}
+ .userinput {
+     text-align: right;
+}
+ .userinput > .message {
+     border-radius: 10px 10px 0 10px;
+     background-color: #00bcd4;
+}
+ .bot-message {
+     text-align: left;
+}
+ .bot-message > .message {
+     border-radius: 10px 10px 10px 0;
+}
+ #sendMessage {
+     border: none;
+     position: absolute;
+     right: 8px;
+     bottom: 10px;
+     z-index: 10;
+     color: #00bcd4;
+     font-weight: 600;
+}
+ 

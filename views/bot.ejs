@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/normalize.css">
+    <link rel="stylesheet" href="/assets/message.css">
+  </head>
+  <body>
+    <div class="image"></div>
+<div id="window">
+  <center><h4>Know Your Weather</h4></center>
+  <div class="" id="messaging">
+  </div>
+    <div class="input">
+      <form id="userform">
+        <input type="text" name="input" id="inputText" placeholder="Enter Your Message">
+        <button type="submit" id="sendMessage">Send</button>
+      </form>
+    </div>
+</div>
+<script>
+$("#userform").on("submit", function(e){
+  e.preventDefault();
+  display();
+});
+
+function displayUserMessage (message) {
+  $('#messaging').append(`
+  <div class='userinput'>
+   <div class='message'>
+     ${message}
+   </div><br>
+  </div>
+  `);
+}
+
+function displayBotMessage (message) {
+  $('#messaging').append(`
+   <div class='bot-message'>
+     <div class='message' style="background:#eee">
+       ${message}
+     </div><br>
+   </div>
+  `);
+}
+
+  setTimeout(() => {
+    displayBotMessage('Hii!')
+  }, 500);
+  setTimeout(() => {
+    displayBotMessage('I am your Weather Bot, ask me the weather of any place');
+  }, 800);
+
+  function display()
+    {
+        var userMessage = document.getElementById('inputText').value;
+        displayUserMessage(userMessage);
+        document.getElementById('inputText').value="";
+
+        axios.post('/api/message', {
+          input: userMessage
+        })
+        .then(function (response) {
+          var ParsedResponse=JSON.parse(response.data)
+          var text;
+          if (ParsedResponse.hasOwnProperty("weather")) {
+            text="It's "+ParsedResponse.weather[0].main+" and the temperature is "+ParsedResponse.main.temp+" degree celcius"
+          }
+          else {
+            text=ParsedResponse.result.output.generic[0].text
+          }
+          displayBotMessage(text);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+</script>
+  </body>
+</html>
