@@ -12,7 +12,7 @@ const {
 const assistant = new AssistantV2({
     version: '2020-02-05',
     authenticator: new IamAuthenticator({
-        apikey: 'lzDZKwPPZXduFKzav4PGnRl5zn46EE_2fihYzvA3iCYs',
+        apikey: 'API_KEY',
     }),
     url: 'https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/5d2e62aa-d4f2-4665-9b1e-83d08725bf94',
 });
@@ -30,11 +30,11 @@ app.get('/api/message', (req, res) => res.render('bot'))
 
 app.post('/api/message', (req, res) => {
     assistant.createSession({
-            assistantId: '0f546000-8603-4c34-a20c-6af8e4b9d7b6'
+            assistantId: 'ASSITANT_ID'
         })
         .then(sid => {
             assistant.message({
-                    assistantId: '0f546000-8603-4c34-a20c-6af8e4b9d7b6',
+                    assistantId: 'ASSITANT_ID',
                     sessionId: sid.result.session_id,
                     input: {
                         'message_type': 'text',
