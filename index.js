@@ -45,7 +45,7 @@ app.post('/api/message', (req, res) => {
                     if(req.body.input.toLowerCase().includes("weather"))
                     {
                         city = mes.result.output.entities[0].value
-                        request(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=2442ee4b759045ac7f1d3aa1178b63a8&units=metric`, function(err, response, body) {
+                        request(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=API_ID&units=metric`, function(err, response, body) {
                             if (err) {
                                 console.log('error:', err);
                             } else {
